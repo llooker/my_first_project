@@ -93,7 +93,7 @@ view: users {
     sql:  ${time_since_signup} <= 30  ;;
   }
 
-  measure: users_who_ordered_withing_30_days {
+  measure: users_who_ordered_withing_30_days_1 {
     type: count_distinct
     sql: ${id} ;;
     filters: {
@@ -102,6 +102,14 @@ view: users {
     }
   }
 
+  measure: users_who_ordered_withing_30_days_2 {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: {
+      field: time_since_signup
+      value: "<= 30"
+    }
+  }
 
   measure: count {
     type: count
